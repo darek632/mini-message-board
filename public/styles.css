@@ -1,0 +1,15 @@
+.message { 
+    border: 1px solid red;
+}
+.name { 
+    font-weight: 700;
+}
+
+.date {
+    font-size: 12px;
+}
+
+.message-card {
+    border: 1px solid grey;
+    background-color: #FAF9F6;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New message</title>
+</head>
+<body>
+<%- include('navbar',{links:links}) %>
+
+     <main>
+      <form class="message-form" action="/new" method="POST">
+        <label for="message">Message</label>
+       <textarea
+         id="message"
+          name="message"
+          rows="5"
+          class="message-input"
+          required >
+        </textarea>
+        <button type="submit" class="message-button">Submit</button>
+      </form>
+    </main>
+
+    
+</body>
+</html>
