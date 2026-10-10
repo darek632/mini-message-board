@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node db/createdb.js postgresql://darek@localhost:5432/messageboard",
+    "seed": "node db/populatedb.js postgresql://darek@localhost:5432/messageboard",
     "clear": "node db/cleardb.js postgresql://darek@localhost:5432/messageboard"
   },
   "keywords": [],
