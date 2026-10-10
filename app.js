@@ -1,22 +1,19 @@
 const express = require("express");
 const app = express();
 const path = require("node:path");
+const indexRouter = require("./routes/indexRouter");
 
 
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
-
-// app.get("/", (req, res) => res.send("Hello message board"));
-//this gets handled within the index router, among the other requests.
-
-
-
 app.use(express.urlencoded({ extended: true }))
 // to allow data from POST to be read as objects
 
 
-const indexRouter = require("./routes/indexRouter");
+// app.get("/", (req, res) => res.send("Hello message board"));
+//this gets handled within the index router, among the other requests.
+
 
 
 const links = [
@@ -41,7 +38,8 @@ app.use("/", indexRouter);
 
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, (error) => {
   // This is important!
   // Without this, any startup errors will silently fail

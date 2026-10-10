@@ -8,7 +8,10 @@
 <body>
 
 <form method="POST" action="/new">
+
     <h1>Write new message!</h1>
+      <%- include("partials/errors.ejs") %>
+      
     <label for="author">Author:</label>
     <input 
     type="text"

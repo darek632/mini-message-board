@@ -1,53 +1,60 @@
 const { Router } = require("express");
+const messageboardController = require("../controllers/messageboardController");
+
 const indexRouter = Router();
 
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];
+// const messages = [
+//   {
+//     text: "Hi there!",
+//     user: "Amando",
+//     added: new Date()
+//   },
+//   {
+//     text: "Hello World!",
+//     user: "Charles",
+//     added: new Date()
+//   }
+// ];
 
-indexRouter.get("/", (req, res) => {
-    res.render("index", {message: "Welcome bastards",title: "Mini messageboard", messages })});
+// indexRouter.get("/", (req, res) => {
+//     res.render("index", {message: "Welcome bastards",title: "Mini messageboard", messages })});
 
-indexRouter.get("/new", (req,res) => {
-  res.render("form");
-})
+// indexRouter.get("/new", (req,res) => {
+//   res.render("form");
+// })
 
-indexRouter.post("/new", (req,res)=> {
-  messages.push({
-    text:req.body.message,
-    user: req.body.author,
-    added: new Date()
+// indexRouter.post("/new", (req,res)=> {
+//   messages.push({
+//     text:req.body.message,
+//     user: req.body.author,
+//     added: new Date()
   
 
-  })
-    res.redirect("/");
-  // accessing the values submitted from form, under req.body.name of the input
-  // after POSTing, send user back to homepage to see the new entry
-})
+//   })
+//     res.redirect("/");
+//   // accessing the values submitted from form, under req.body.name of the input
+//   // after POSTing, send user back to homepage to see the new entry
+// })
 
-indexRouter.get("/message/:id", (req,res) => {
-  const message = messages[Number(req.params.id)];
-  //req.params is object so need to reach inside of it to get the actual value
-  // browser just receives /message/2 it doesn't know what to get just beecause of the number, hence we need to create 
-  // a specific route to it, by accessing the message from messages array at that index/
+// indexRouter.get("/message/:id", (req,res) => {
+//   const message = messages[Number(req.params.id)];
+//   //req.params is object so need to reach inside of it to get the actual value
+//   // browser just receives /message/2 it doesn't know what to get just beecause of the number, hence we need to create 
+//   // a specific route to it, by accessing the message from messages array at that index/
 
-  if(!message) {
-    return res.status(404).send("Message not found");
-  }
+//   if(!message) {
+//     return res.status(404).send("Message not found");
+//   }
   
-  res.render("message", {message});
+//   res.render("message", {message});
 
   
-});
+// });
+
+indexRouter.get("/", messageboardController.messageListGet);
+indexRouter.get("/new", messageboardController.messageCreateGet);
+indexRouter.post("/new",messageboardController.messageCreatePost);
+indexRouter.get("/message/:id", messageboardController.messageGet);
 
 module.exports = indexRouter;
